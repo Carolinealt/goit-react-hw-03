@@ -1,0 +1,9 @@
+.list {
+    list-style: none;
+}
+
+.listItem {
+    border: 1px white solid;
+    border-radius: 15px;
+    margin: 10px;
+}
