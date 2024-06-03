@@ -1,11 +1,14 @@
 import clsx from "clsx";
 import Contact from "./Contact/Contact";
 import css from "./ContactList.module.css";
-const ContactList = ({ contacts, filterValue }) => {
-  
-  const filteredContacts = contacts.filter((contact) => {
-    return contact.name.toLowerCase().includes(filterValue.toLowerCase());
-  });
+const ContactList = ({ contacts, filterValue = "", onDelete }) => {
+  const filtrating = (contacts) => {
+    return contacts.filter((contact) => {
+      return contact.name.toLowerCase().includes(filterValue.toLowerCase());
+    });
+  };
+
+  const filteredContacts = filterValue !== "" ? filtrating(contacts) : contacts;
 
   return (
     <>
@@ -13,7 +16,12 @@ const ContactList = ({ contacts, filterValue }) => {
         {filteredContacts.map((contact) => {
           return (
             <li key={contact.id} className={clsx(css.listItem)}>
-              <Contact name={contact.name} number={contact.number} />
+              <Contact
+                name={contact.name}
+                number={contact.number}
+                onDelete={onDelete}
+                id={contact.id}
+              />
             </li>
           );
         })}
