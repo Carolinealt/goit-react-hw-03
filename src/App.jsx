@@ -13,6 +13,7 @@ const contactData = [
 ];
 
 function App() {
+  localStorage.clear();
   const localDataContacts = (contactData) => {
     const unparseData = localStorage.getItem("contacts");
     return unparseData !== "undefined" ? JSON.parse(unparseData) : contactData;
