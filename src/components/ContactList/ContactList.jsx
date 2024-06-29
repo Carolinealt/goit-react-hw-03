@@ -9,7 +9,10 @@ const ContactList = ({ contacts, filterValue = "", onDelete }) => {
   };
 
   const filteredContacts = filterValue !== "" ? filtrating(contacts) : contacts;
-
+  if (filteredContacts === undefined) {
+    return;
+  }
+  console.log("filteredContacts :>> ", filteredContacts);
   return (
     <>
       <ul className={clsx(css.list)}>
