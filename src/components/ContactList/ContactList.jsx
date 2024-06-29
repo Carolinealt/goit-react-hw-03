@@ -9,7 +9,7 @@ const ContactList = ({ contacts, filterValue = "", onDelete }) => {
   };
 
   const filteredContacts = filterValue !== "" ? filtrating(contacts) : contacts;
-  if (filteredContacts === undefined) {
+  if (filteredContacts === null) {
     return;
   }
   console.log("filteredContacts :>> ", filteredContacts);
