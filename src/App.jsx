@@ -13,20 +13,23 @@ const contactData = [
 ];
 
 function App() {
-  localStorage.clear();
-  const localDataContacts = (contactData) => {
-    const unparseData = localStorage.getItem("contacts");
-    return unparseData !== "undefined" ? JSON.parse(unparseData) : contactData;
-  };
-
-  const [contactDataValues, setContactDataValues] = useState(() =>
-    localDataContacts(contactData)
-  );
-
+  // useState
   const [filterValue, setFilterValue] = useState("");
+
+  const setLocalDataContacts = (contactData) => {
+    const unparseData = localStorage.getItem("contacts");
+    const arrayToRender =
+      unparseData !== "null" ? JSON.parse(unparseData) : contactData;
+    return arrayToRender;
+  };
+  // useState
+  const [contactDataValues, setContactDataValues] = useState(() =>
+    setLocalDataContacts(contactData)
+  );
 
   useEffect(() => {
     window.localStorage.setItem("contacts", JSON.stringify(contactDataValues));
+    console.log("contactDataValues :>> ", contactDataValues);
   }, [contactDataValues]);
 
   const handleFilter = (e) => {
@@ -46,7 +49,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>Phonebook</h1>
       <ContactForm onSubmit={submitFormData} />
       <SearchBox onChange={handleFilter} value={filterValue} />

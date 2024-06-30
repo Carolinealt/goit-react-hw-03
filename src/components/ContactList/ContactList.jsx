@@ -12,7 +12,6 @@ const ContactList = ({ contacts, filterValue = "", onDelete }) => {
   if (filteredContacts === null) {
     return;
   }
-  console.log("filteredContacts :>> ", filteredContacts);
   return (
     <>
       <ul className={clsx(css.list)}>
