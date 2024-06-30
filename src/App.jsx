@@ -29,7 +29,6 @@ function App() {
 
   useEffect(() => {
     window.localStorage.setItem("contacts", JSON.stringify(contactDataValues));
-    console.log("contactDataValues :>> ", contactDataValues);
   }, [contactDataValues]);
 
   const handleFilter = (e) => {
